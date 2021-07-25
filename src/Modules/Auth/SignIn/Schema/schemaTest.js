@@ -1,9 +1,8 @@
+/* eslint-disable */
 import { v4 as uuid } from 'uuid';
 import { Typography } from '@material-ui/core';
 import FieldsEnum from '../../../../Core/FormCreator/Utils/FieldsEnum';
-export default
-
-    [
+export default [
         {
             id: uuid(),
             label: {

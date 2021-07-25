@@ -1,4 +1,5 @@
-import React, { useCallback, useEffect, useMemo, useState } from "react"
+/* eslint-disable */
+import React, { useMemo, useState } from "react"
 import { useStyles } from '../../../../styles.js'
 import Table from '@material-ui/core/Table'
 import TableBody from '@material-ui/core/TableBody'
@@ -23,12 +24,13 @@ export default function ComplaintList() {
     const setAlertInfo = useUpdateAlert()
     const loginUpdate = useUpdateLoginInfo()
     const [userInfo] = useState(JSON.parse(localStorage.getItem("userInfo")))
-    const [pageNo, setPageNo] = useState(0)
-    const [pageSize, setPageSize] = useState(10)
-    const [colSort, setColSort] = useState('complaintId')
+    const [pageNo] = useState(0)
+    const [pageSize] = useState(10)
+    const [colSort] = useState('complaintId')
     const data = useMemo(() => {
         return getDataList()
     }, [pageNo, pageSize, colSort])
+    
     async function getDataList() {
         let pagenationDetails = '';
         if (!!pageNo)

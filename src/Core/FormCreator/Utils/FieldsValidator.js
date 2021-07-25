@@ -9,9 +9,9 @@ class BreakException extends Error {
     }
 }
 
-export default function validateSchema(schemaFields, values, t) {
+export default function validateSchema({ schema, values}) {
     const errors = {}
-    schemaFields.forEach(element => {
+    schema.forEach(element => {
         try {
             element.validators.forEach(validator => {
                 if(!!defualtValidators[validator]){
@@ -19,7 +19,7 @@ export default function validateSchema(schemaFields, values, t) {
                 }
                 if (!validator.validatorfn(values[element.name]))
                 {
-                    errors[element.name] = t("lang") === "en" ? validator.massege.en : validator.massege.ar
+                    errors[element.name] = validator.massege.ar //t("lang") === "en" ? validator.massege.en : validator.massege.ar
                     throw new BreakException('Break')
                 }
             })

@@ -1,5 +1,4 @@
 import React from 'react'
-import { MenuItem } from '@material-ui/core';
 import { Field } from 'react-final-form';
 import {
     Grid,
@@ -7,22 +6,22 @@ import {
     RadioGroup,
     Typography,
   } from '@material-ui/core';
-  import { TextField as TextFieldFinal, Radio } from 'final-form-material-ui';
+  import { Radio } from 'final-form-material-ui';
+  import PropTypes from 'prop-types'
 
 export default function RadioButtonField(props) {
-    console.log('props ===> ', props)
     let options = [];
     let tOptionLabel = '';
     if (!!props.fieldLookUp) {
         props.fieldLookUp.forEach(option => {
-            tOptionLabel = option.label.ar;
-            options.push({ label: tOptionLabel, value: option.value })
+            tOptionLabel = option['name'];
+            options.push({ label: tOptionLabel, value: option.ID })
         })
     } else {
         props.options.forEach(option => {
             //tOptionLabel = t('lang') === 'en' ? option.label.en : option.label.ar;
             tOptionLabel = option.label.ar;
-            options.push({ label: tOptionLabel, value: option.value })
+            options.push({ name: tOptionLabel, value: option.value })
         });
     }
     let gridSize = !!props.gridSize ? props.gridSize : 12;
@@ -33,7 +32,7 @@ export default function RadioButtonField(props) {
         xs={gridSize}
         className="custom-label-field"
       >
-        <Typography> {props.label}</Typography>
+        <Typography> {props.tLabel}</Typography>
         <RadioGroup row >
           {options.forEach(option => (
             <FormControlLabel
@@ -46,4 +45,12 @@ export default function RadioButtonField(props) {
         </RadioGroup>
       </Grid>
     )
+}
+RadioButtonField.propTypes = {
+  options: PropTypes.object,
+  tLabel: PropTypes.string,
+  gridSize: PropTypes.number,
+  name: PropTypes.string,
+  value: PropTypes.string,
+  fieldLookUp: PropTypes.object,
 }

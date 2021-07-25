@@ -1,5 +1,5 @@
 import { useState } from "react"
-import CreatNewSchema from "../../../../Core/FormCreator/Components/CreatNewSchema"
+import FieldsCreator from "../../../../Core/FormCreator/Components/FieldsCreator"
 
 export default function SignInSchema() {
 
@@ -60,5 +60,5 @@ export default function SignInSchema() {
             required: true,
         }]
     )
-    return CreatNewSchema(schemaFields)
+    return FieldsCreator(schemaFields)
 }

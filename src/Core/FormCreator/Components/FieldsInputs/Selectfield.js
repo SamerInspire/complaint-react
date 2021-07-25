@@ -2,13 +2,11 @@ import React from 'react'
 import { Select } from 'final-form-material-ui';
 import { MenuItem } from '@material-ui/core';
 import Grid from '@material-ui/core/Grid';
-import { useTranslation } from 'react-i18next';
+//import { useTranslation } from 'react-i18next';
 import { Field } from 'react-final-form';
 
 export default function SelectInput(props) {
-    const [t] = useTranslation('common');
-    console.log('props ===> ', props)
-    console.log('props[name] ===> ', props['name'])
+    //const [t] = useTranslation('common');
     let options = [];
     let tOptionLabel = '';
     if (!!props.fieldLookUp) {
