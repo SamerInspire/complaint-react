@@ -2,17 +2,19 @@ import React from 'react'
 import { Select } from 'final-form-material-ui';
 import { MenuItem } from '@material-ui/core';
 import Grid from '@material-ui/core/Grid';
-//import { useTranslation } from 'react-i18next';
 import { Field } from 'react-final-form';
+import PropTypes from 'prop-types'
 
-export default function SelectInput(props) {
+export default function SelectField(props) {
     //const [t] = useTranslation('common');
+    console.log('props ===> ', props)
+    console.log('props[attrName] ===> ', props['name'])
     let options = [];
     let tOptionLabel = '';
     if (!!props.fieldLookUp) {
         props.fieldLookUp.forEach(option => {
-            tOptionLabel = option.label.ar;
-            options.push({ label: tOptionLabel, value: option.value })
+            tOptionLabel = option['name'];
+            options.push({ label: tOptionLabel, value: option.ID })
         })
     } else {
         props.options.forEach(option => {
@@ -47,3 +49,14 @@ export default function SelectInput(props) {
         </Grid>
     )
 }
+SelectField.propTypes = {
+    options: PropTypes.object,
+    tLabel: PropTypes.string,
+    gridSize: PropTypes.number,
+    type: PropTypes.string,
+    name: PropTypes.string,
+    style: PropTypes.object,
+    value: PropTypes.string,
+    required: PropTypes.bool,
+    fieldLookUp: PropTypes.object,
+  }

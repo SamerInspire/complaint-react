@@ -5,7 +5,9 @@ import {
 } from '@material-ui/core';
 import { Checkbox } from 'final-form-material-ui';
 import PropTypes from 'prop-types'
-import { Grid, } from '@material-ui/core';
+import {
+    Grid,
+} from '@material-ui/core';
 
 export default function CheckboxField(props) {
 
@@ -28,7 +30,7 @@ export default function CheckboxField(props) {
                                     name={props.name}
                                     component={Checkbox}
                                     type="checkbox"
-                                    value={!!props.values[props.value]}
+                                    value={!!props.values[props.value][0]}
                                     onClick={() => {
                                         // props.setField("agree", props.values.agree ? [] : [true]);
                                     }}

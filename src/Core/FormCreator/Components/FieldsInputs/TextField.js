@@ -1,18 +1,18 @@
 import React from 'react'
-import Grid from '@material-ui/core/Grid';
+import {Grid,  Box, TextField as TextFieldCore} from '@material-ui/core';
 import { TextField as TextFieldFinal } from 'final-form-material-ui';
 import { Field } from 'react-final-form';
+import PropTypes from 'prop-types'
 
-export default function TextFieldInput(props) {
-    console.log('props', props)
-    let gridSize = !!props.gridSize ? props.gridSize : 12;
+export default function TextField(props) {
+    const gridSize = !!props.gridSize ? props.gridSize : 12
 
     if (props.type !== 'date') {
         return (
             <Grid item xs={gridSize} >
                 <Field
                     fullWidth
-                    required
+                    required={props.required}
                     label={props.tLabel}
                     name={props.name}
                     component={TextFieldFinal}
@@ -27,7 +27,7 @@ export default function TextFieldInput(props) {
             <>
                 <Grid container md={6} xs={gridSize} spacing={1}>
                     <Grid item >
-                        <TextFieldFinal
+                        <TextFieldCore
                             fullWidth
                             InputLabelProps={{ classes: { root: props.labelRootStyle }, shrink: true }} //, shrink: props.labelShrinkStyle 
                             label={'من : '}
@@ -43,7 +43,7 @@ export default function TextFieldInput(props) {
                         />
                     </Grid>
                     <Grid item>
-                        <TextFieldFinal
+                        <TextFieldCore
                             fullWidth
                             InputLabelProps={{ classes: { root: props.labelRootStyle }, shrink: true }} //, shrink: props.labelShrinkStyle 
                             label={'الى : '}
@@ -62,4 +62,16 @@ export default function TextFieldInput(props) {
             </>
         )
     }
+}
+TextField.propTypes = {
+  labelRootStyle: PropTypes.object,
+  tLabel: PropTypes.string,
+  handleChange: PropTypes.func,
+  gridSize: PropTypes.number,
+  rows: PropTypes.number,
+  type: PropTypes.string,
+  name: PropTypes.string,
+  value: PropTypes.string,
+  multiline: PropTypes.bool,
+  disabled: PropTypes.bool,
 }
